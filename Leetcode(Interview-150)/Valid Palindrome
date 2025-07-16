@@ -1,0 +1,17 @@
+// Check weather the string is palindrome or not using two pointers
+class Solution {
+    public boolean isPalindrome(String s) {
+        s = s.replaceAll("[^a-zA-Z0-9]","").toLowerCase(); //remove the punctuations and covert the string to lowercase
+        int i=0;            //initialize start of string as i for iteration
+        int j=s.length()-1;  //initialize end of string as j  for iteration
+
+        while(i<j){
+            if(s.charAt(i) != s.charAt(j)){
+                return false;
+            }
+            i++; //increment i
+            j--; //increment j
+        }
+        return true;
+    }
+}
