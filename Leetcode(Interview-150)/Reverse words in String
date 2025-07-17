@@ -1,0 +1,11 @@
+class Solution {
+    public String reverseWords(String s) {
+        s = s.trim(); //remove unwanted spaces
+        String[] w = s.split("\\s+"); 
+        StringBuilder sb = new StringBuilder();
+        for(int i=w.length-1; i>=0; i--){
+            sb.append(w[i]).append(" "); //give space as required in sentence
+        }
+        return sb.toString().trim();
+    }
+}
