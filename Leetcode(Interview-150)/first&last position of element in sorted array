@@ -1,0 +1,40 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int f = first(nums,target);
+        int l = last(nums,target);
+
+        return new int[] {f,l};
+    }
+    private int first(int[] nums,int target){
+        int fir = -1;
+        int l=0,h=nums.length-1;
+        while(l<=h){
+            int mid = (l+h)/2;
+            if(nums[mid] >= target){
+                h = mid-1;
+            }else{
+                l = mid+1;
+            }
+            if(nums[mid] == target){
+                fir = mid;
+            }
+        }
+        return fir;
+    }
+    private int last(int[] nums,int target){
+        int las = -1;
+        int l=0,h=nums.length-1;
+        while(l<=h){
+            int mid = (l+h)/2;
+            if(nums[mid] <= target){
+                l = mid+1;
+            }else{
+                h = mid-1;
+            }
+            if(nums[mid] == target){
+                las = mid;
+            }
+        }
+        return las;
+    }
+}
