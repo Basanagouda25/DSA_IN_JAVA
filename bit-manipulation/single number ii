@@ -1,0 +1,18 @@
+class Solution {
+    public int singleNumber(int[] nums) {
+        int res = 0;
+        for(int i=0; i<32; i++){ // from 0 to 31 bits
+            int sum = 0;
+            int bm = 1<<i; //bit index
+            for(int j=0; j<nums.length; j++){
+                if((nums[j] & bm) !=0){
+                    sum++;
+                } 
+            }
+            if(sum%3 !=0){
+                res = res | bm;
+            }
+        }
+        return res;
+    }
+}
