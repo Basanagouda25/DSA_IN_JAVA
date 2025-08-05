@@ -1,0 +1,6 @@
+class Solution {
+    public int minBitFlips(int start, int goal) {
+      // just count how many one's are there and return.
+        return Integer.bitCount(start ^ goal); 
+    }
+}
