@@ -1,0 +1,140 @@
+import java.util.*;
+
+public class single {
+    Node head;
+
+    class Node {
+        int data;
+        Node next;
+
+        // initialize the data
+        Node(int data) {
+            this.data = data;
+            this.next = null; // for last Node
+        }
+
+    }
+
+    // insert first
+    void insertfirst(int data) {
+        Node newnNode = new Node(data);
+        if (head == null) {
+            head = newnNode;
+            return;
+        }
+        newnNode.next = head;
+        head = newnNode;
+    }
+
+    // insertion at the end
+    void insertlast(int data) {
+        Node newNode = new Node(data); // new Node creating
+        if (head == null) {
+            head = newNode;
+            return;
+        }
+        Node currentnode = head; // start from head
+        while (currentnode.next != null) { // traverse upto last Node
+            currentnode = currentnode.next;
+        }
+        currentnode.next = newNode; // link new Node 1st current node is null
+    }
+
+    //delete first
+    void deletefirst(){
+        if(head == null){
+            System.out.println("list is empty");
+            return;
+        }
+        head = head.next;
+    }
+
+    //delete last
+    void deletelast(){
+        if(head == null){
+            System.out.println("list is empty");
+            return;
+        }
+        if(head.next == null){
+            head = null;
+            return;
+        } 
+        //traversing
+        Node secondlast = head;
+        Node last = head.next;
+        while (last.next != null) {
+            last = last.next;
+            secondlast = secondlast.next;
+        }
+        secondlast.next = null;
+    }
+    // print
+    void display() {
+        if (head == null) {
+            System.out.println("list is empty");
+            return;
+        }
+        Node currentnode = head;
+        while (currentnode != null) {
+            System.out.print(currentnode.data + "->");
+            currentnode = currentnode.next;
+        }
+        System.out.println("null");
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the total number of Elements in list:");
+        int n = sc.nextInt();
+        // create a object of our own class
+        single list = new single(); // because you used your file name as single
+        System.out.println("Enter the elements in list:");
+        for (int i = 0; i < n; i++) {
+            int ele = sc.nextInt();
+            list.insertlast(ele);
+        }
+        int choice;
+        do
+        {
+            System.out.println("\n1. Insert first");
+            System.out.println("2. Insert last");
+            System.out.println("3. Delete first");
+            System.out.println("4. Delete last");
+            System.out.println("5. Display ");
+            System.out.println("6. Exit");
+            System.out.print("Choose an option: ");
+            choice = sc.nextInt();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter the element to be added first:");
+                        int ele1 = sc.nextInt();
+                        list.insertfirst(ele1);
+                    break;
+                case 2:
+                    System.out.println("Enter the element to be added last:");
+                        int ele2 = sc.nextInt();
+                        list.insertlast(ele2);
+                    break;
+                case 3:
+                    list.deletefirst();
+                    break;
+                case 4:
+                    list.deletelast();
+                    break;
+                case 5:
+                    System.out.println("Linked list:");
+                    list.display();
+                    break;
+                case 6:
+                    System.out.println("You are Exiting.");
+                    break;
+                default:
+                    System.out.println("Invalid option");
+                    break;
+            }
+        }
+        while (choice !=6); 
+        sc.close();
+    }
+}
