@@ -1,5 +1,5 @@
+//single linked list
 import java.util.*;
-
 public class single {
     Node head;
 
