@@ -1,0 +1,31 @@
+/*
+class Node {
+    int data;
+    Node next;
+    Node(int value) {
+        this.value = value;
+    }
+}*/
+
+
+class Solution {
+    Node reverseList(Node head) {
+        // code here
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node prev = head;
+        Node curr = head.next;
+        while(curr != null){
+            Node nextnode = curr.next;
+            curr.next = prev;
+            
+            prev = curr;
+            curr = nextnode;
+        }
+        head.next = null;
+        head = prev;
+        
+        return prev;
+    }
+}
