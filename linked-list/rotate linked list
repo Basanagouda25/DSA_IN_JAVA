@@ -1,0 +1,39 @@
+//it is for left rotation
+class Node{
+    int data;
+    Node next;
+    Node(int d){
+        data=d;
+        next=null;
+    }
+}
+
+class Solution {
+    public Node rotate(Node head, int k) {
+        // add code here
+        if(head == null || head.next == null){
+            return head;
+        }
+        Node temp = head;
+        int length = 1;
+        while(temp.next != null){
+            temp = temp.next;
+            length++;
+        }
+        temp.next = head;
+        k = k % length;
+        if(k%length == 0){
+            temp.next=null;
+            return head;
+        }
+        Node tail = head;
+        for(int i=1; i<k; i++){ // take i<length-k for right rotation
+            tail = tail.next;
+        }
+        Node newhead = tail.next;
+        tail.next = null;
+        head = newhead;
+        
+        return head;
+    }
+}
