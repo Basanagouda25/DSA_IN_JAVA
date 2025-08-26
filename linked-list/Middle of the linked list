@@ -1,0 +1,13 @@
+/*Basically it is used of fast and slow pointers
+assign slow and fast to head and move slow as one step and fast as two step */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+}
