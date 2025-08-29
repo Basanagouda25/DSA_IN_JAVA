@@ -1,0 +1,7 @@
+//just assign the next node in the place of deleted node and connect them .
+class Solution {
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
+}
