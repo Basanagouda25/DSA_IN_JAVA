@@ -1,0 +1,83 @@
+//Stack using linked list
+public class Stackll {
+   public class Node {
+        int data;
+        Node next;
+
+        Node(int data){
+            this.data = data;
+            this.next = null;
+        }
+   }
+
+   private Node top;
+   private int size;
+   
+   //create a stack
+   public Stackll(){
+        top = null;
+        size = 0;
+   }
+
+
+   public boolean isEmpty(){
+    return top == null;
+   }
+
+   public int size(){
+    return size;
+   }
+
+   public void push(int data){
+        Node node = new Node(data);
+        node.next = top;
+        top = node;
+        size++;
+   }
+
+   public int pop(){
+    if (isEmpty()) {
+        System.out.println("stack is empty");
+        return -1;
+    }
+    int value = top.data;
+    top = top.next;
+    size--;
+    return value;
+   }
+
+   public int topelement(){
+    if(isEmpty()){
+        System.out.println("Stack is empty");
+    }
+    return top.data;
+   }
+
+   public void display(){
+    Node temp = top;
+        while (temp != null) {
+            System.out.print("->"+temp.data);
+            temp = temp.next;
+        }
+   }
+
+   public static void main(String[] args) {
+    Stackll s = new Stackll();
+
+    System.out.println("Adding values:");
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(40);
+    s.push(50);
+    s.display();
+
+    System.out.println("\nAfter deleting:");
+    s.pop();
+    s.display();
+
+    System.out.print("\nTop element is:"+s.topelement());
+    System.out.println("\n The size of the stack is:"+s.size());
+   }
+}
+
