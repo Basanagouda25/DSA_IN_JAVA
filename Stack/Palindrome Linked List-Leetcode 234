@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+        Stack<Integer> s = new Stack<>();
+
+        while(head != null){
+            s.push(head.val);
+            head = head.next;
+        }
+        int left = 0;
+        int right = s.size()-1;
+
+        while(left < right){
+            if(!s.get(left).equals(s.get(right))){
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+}
