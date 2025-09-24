@@ -1,16 +1,16 @@
 class Solution {
     public int minAddToMakeValid(String s) {
-        int opencount=0;
-        int closecount=0;
+        int size=0;
+        int open=0;
         for(char c:s.toCharArray()){
             if(c=='('){
-                opencount++;
-            }else if(opencount > 0){
+                size++;
+            }else if(size > 0){ //check if any open bracket is present or not
                 opencount--;
             }else{
-                closecount++;
+                open++;
             }
         }
-        return opencount+closecount;
+        return open+size;
     }
 }
