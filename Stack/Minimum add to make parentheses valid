@@ -1,0 +1,16 @@
+class Solution {
+    public int minAddToMakeValid(String s) {
+        int opencount=0;
+        int closecount=0;
+        for(char c:s.toCharArray()){
+            if(c=='('){
+                opencount++;
+            }else if(opencount > 0){
+                opencount--;
+            }else{
+                closecount++;
+            }
+        }
+        return opencount+closecount;
+    }
+}
