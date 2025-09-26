@@ -30,4 +30,4 @@ class Solution {
         }
         return max;
     }
-} is it optimal?
+}
