@@ -1,0 +1,43 @@
+//Using prefix sum TC=O(n),SC=O(n);
+class Solution {
+    public int numberOfSubarrays(int[] nums, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        int res = 0;
+        int oddcount = 0;
+        map.put(oddcount,1);
+        for(int i=0; i<nums.length; i++){
+            oddcount = oddcount+(nums[i]%2);
+            if(map.containsKey(oddcount-k)){
+                res += map.get(oddcount-k);
+            }
+            map.put(oddcount, map.getOrDefault(oddcount, 0) + 1);
+
+        }
+        return res;
+    }
+}
+
+//Using Sliding Window TC=O(n),SC=O(1)
+class Solution {
+    public int numberOfSubarrays(int[] nums, int k) {
+        int prev = 0, odd = 0, res = 0;
+        int i = 0, j = 0;
+        int n = nums.length;
+        while (j < n) {
+            if (nums[j] % 2 != 0) {
+                odd++;
+                prev = 0;
+            }
+            while (odd == k) {
+                prev++;
+                if (i < n && nums[i] % 2 == 1) {
+                    odd--;
+                }
+                i++;
+            }
+            res += prev;
+            j++;
+        }
+        return res;
+    }
+}
