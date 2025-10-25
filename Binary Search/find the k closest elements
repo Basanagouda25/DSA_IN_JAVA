@@ -1,0 +1,17 @@
+Brute Force:
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int l = 0, r = arr.length - 1;
+        while (r - l + 1 > k) {
+            if ((Math.abs(arr[l] - x) > Math.abs(arr[r] - x))) {
+                l++;
+            } else if ((Math.abs(arr[l] - x) < Math.abs(arr[r] - x))) {
+                r--;
+            } else {
+                r--;
+
+            }
+        }
+        return Arrays.stream(arr, l, r + 1).boxed().collect(Collectors.toList());
+    }
+}
