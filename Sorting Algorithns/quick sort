@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class CRC {
+    public void quicksort(int[] arr,int low,int high){
+        if(low > high){
+            return;
+        }
+        int pi = partition(arr,low,high);
+        quicksort(arr, low, pi-1);
+        quicksort(arr, pi+1, high);
+    }
+    public int partition(int[] arr,int low,int high){
+        int pi = low;
+        int pivot = high;
+        for(int i=low; i<high; i++){
+            if(arr[i] <= pivot){
+                int temp = arr[pi];
+                arr[pi] = arr[i];
+                arr[i] = temp;
+                pi++;
+            }
+        }
+        int temp = arr[pi];
+        arr[pi] = arr[high];
+        arr[high] = temp;
+        return pi;
+    }
+    public static void main(String[] args) {
+    int[] arr = {8, 3, 2, 7, 9, 6, 4, 5};
+    int low = 0, high = arr.length - 1;
+
+    CRC obj = new CRC();              
+    obj.quicksort(arr, low, high);    
+
+    // print sorted array
+    for (int x : arr) {
+        System.out.print(x + " ");
+    }
+}
+
+}
