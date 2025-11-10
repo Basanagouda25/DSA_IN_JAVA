@@ -1,0 +1,31 @@
+import java.util.PriorityQueue;
+import java.util.Queue;
+
+public class MyQueue {
+    public static void main(String[] args) {
+        Queue<Integer> pq = new PriorityQueue<>();
+
+        //to add elements
+        pq.add(10);
+        pq.add(20);
+        pq.add(30);
+        pq.add(40);
+        pq.add(50);
+
+        System.out.println("Adding the elements: " + pq);
+        System.out.println(pq);
+
+        //to delete elements 
+        System.out.println("After Removing: " + pq.poll());
+
+        //to find the first element 
+        System.out.println("To acess first element: "+pq.peek());
+
+
+        // to iterate over every element
+        while (!pq.isEmpty()) {
+            System.out.print(pq.poll() + "->");
+        }
+        System.out.println("null");
+    }
+}
