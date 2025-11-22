@@ -1,0 +1,18 @@
+class Solution {
+    public int maxAbsoluteSum(int[] nums) {
+        int n = nums.length;
+        int maxsum = nums[0];
+        int minsum = nums[0];
+
+        int currsubmax = nums[0];
+        int currsubmin = nums[0];
+        for(int i=1; i<n; i++){
+            currsubmax = Math.max(nums[i],currsubmax+nums[i]);
+            maxsum = Math.max(maxsum,currsubmax);
+
+            currsubmin = Math.min(nums[i],currsubmin+nums[i]);
+            minsum = Math.min(minsum,currsubmin);
+        }
+        return Math.max(maxsum,Math.abs(minsum));
+    }
+}
