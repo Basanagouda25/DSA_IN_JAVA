@@ -1,0 +1,43 @@
+class Solution {
+    private int find(int x, int[] parent) {
+        if (x == parent[x]) return x;
+        return parent[x] = find(parent[x], parent);
+    }
+    
+    public ArrayList<Integer> jobSequencing(int[] deadline, int[] profit) {
+        int n = deadline.length;
+        ArrayList<int[]> jobs = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            jobs.add(new int[]{profit[i], deadline[i]});
+        }
+        jobs.sort((a, b) -> b[0] - a[0]);
+        int maxDeadline = 0;
+        for (int d : deadline) {
+            maxDeadline = Math.max(maxDeadline, d);
+        }
+        int[] parent = new int[maxDeadline + 1];
+        for (int i = 0; i <= maxDeadline; i++) {
+            parent[i] = i;
+        }
+        
+        int count = 0;
+        int totalProfit = 0;
+        
+        for (int[] job : jobs) {
+            int d = job[1];
+            int p = job[0];
+            int availableSlot = find(d, parent);
+            
+            if (availableSlot > 0) {
+                count++;
+                totalProfit += p;
+                parent[availableSlot] = find(availableSlot - 1, parent);
+            }
+        }
+        
+        ArrayList<Integer> res = new ArrayList<>();
+        res.add(count);
+        res.add(totalProfit);
+        return res;
+    }
+}
