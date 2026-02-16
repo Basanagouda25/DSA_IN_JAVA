@@ -20,4 +20,10 @@ class Solution {
         
         s.push(x);
     }
+// to print in reverse order
+    public void print(Stack<Integer> s){
+        while(!s.isEmpty()){
+            System.out.print(s.pop());
+        }
+    }
 }
