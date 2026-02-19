@@ -1,0 +1,32 @@
+class Solution {
+    public int reverseExponentiation(int n) {
+        // code here
+        int rev = reverse(n);
+        long mod = 1000000007;
+        
+        return (int) power(n,rev,mod);
+    }
+    
+    public int reverse(int n){
+        int rev = 0;
+        while(n > 0){
+            int rem = n % 10;
+            rev = rev * 10 + rem;
+            n = n/10;
+        }
+        return rev; 
+    }
+    public long power(long base,long exp,long mod){
+        if(exp == 0){
+            return 1;
+        }
+        long half = power(base,exp/2,mod);
+        
+        long result = (half * half) % mod;
+        
+        if(exp % 2 == 1){
+            result = (result * base) % mod;
+        }
+        return result;
+    }
+}
