@@ -1,0 +1,25 @@
+// Last updated: 4/11/2026, 12:45:10 PM
+class Solution {
+    public int minLength(String s) {
+        int n=s.length();
+        int i=0; int j=1;
+        StringBuilder sb = new StringBuilder(s);
+        while(j < n){
+            if(i < 0){
+                i++;
+                sb.setCharAt(i,sb.charAt(j));
+            }
+            else if((sb.charAt(i) == 'A' && sb.charAt(j) == 'B') || 
+                    (sb.charAt(i) == 'C' && sb.charAt(j) == 'D'))
+            {
+                i--;
+            }
+            else{
+                i++;
+                sb.setCharAt(i,sb.charAt(j));
+            }
+            j++;
+        }
+        return i+1;
+    }
+}
