@@ -1,0 +1,19 @@
+// Last updated: 4/11/2026, 12:46:16 PM
+class Solution {
+    public int maxDepth(String s) {
+        int count=0;
+        int num = 0;
+        for(char c : s.toCharArray()){
+            if(c == '('){
+                count++;
+                if(num < count){
+                    num = count; //or 0
+                }
+            }
+            else if(c == ')'){
+                count--;
+            }
+        }
+        return num;
+    }
+}
