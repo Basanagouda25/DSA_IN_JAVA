@@ -1,0 +1,14 @@
+// Last updated: 4/11/2026, 12:45:44 PM
+class Solution {
+    public int minimumDifference(int[] nums, int k) {
+        int n = nums.length;
+        int minval = Integer.MAX_VALUE;
+        int diff = 0;
+        Arrays.sort(nums);
+        for(int i=0; i<=n-k; i++){
+            diff = Math.abs(nums[i] - nums[i+k-1]);
+            minval = Math.min(minval,diff);
+        }
+        return minval;
+    }
+}
