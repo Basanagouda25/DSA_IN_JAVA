@@ -1,0 +1,21 @@
+// Last updated: 4/11/2026, 12:50:29 PM
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        if(s.length() != t.length()){
+            return false;
+        }
+        int[] sfreq = new int[26];
+        int[] tfreq = new int[26];
+        for(char c : s.toCharArray()){
+            sfreq[c - 'a']++;
+        }
+        for(char c : t.toCharArray()){
+            tfreq[c - 'a']++;
+        }
+        if(Arrays.equals(sfreq,tfreq)){
+            return true;
+        }
+        return false;
+
+    }
+}
