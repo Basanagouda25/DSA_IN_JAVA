@@ -1,0 +1,17 @@
+// Last updated: 4/11/2026, 12:46:36 PM
+class Solution {
+    public boolean kLengthApart(int[] nums, int k) {
+        int spaces = k;
+        for(int i=0; i<nums.length; i++){
+            if(nums[i] == 1){
+                if(spaces < k){
+                    return false;
+                }
+                spaces = 0;
+            }else{
+                spaces +=1;
+            }
+        }
+        return true;
+    }
+}
