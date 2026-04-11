@@ -1,0 +1,32 @@
+// Last updated: 4/11/2026, 12:47:20 PM
+class Solution {
+    public int finddays(int[] weights,int capacity){
+        int day=1,load=0;
+        for(int i=0; i<weights.length; i++){
+            if(weights[i]+load > capacity){
+                day++;
+                load = weights[i];
+            }else{
+                load += weights[i];
+            }
+        }
+        return day;
+    }
+    public int shipWithinDays(int[] weights, int days) {
+        int low=0,high=0;
+        for(int w:weights){
+            low = Math.max(low,w);
+            high += w;
+        }
+        while(low <= high){
+            int mid = low + (high-low)/2;
+            int numberofDays = finddays(weights,mid);
+            if(numberofDays <= days){
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return low;
+    }
+}
