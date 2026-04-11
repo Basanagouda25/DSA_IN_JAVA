@@ -1,0 +1,28 @@
+// Last updated: 4/11/2026, 12:46:55 PM
+class Solution {
+    public int sumofValues(int[] nums,int divisior){
+        int sum=0;
+        for(int i=0; i<nums.length; i++){
+            sum += (nums[i]+divisior-1)/divisior;
+        }
+        return sum;
+    }
+    public int smallestDivisor(int[] nums, int threshold) {
+        int low = 1, high = 0;
+        for (int num : nums) {
+            high = Math.max(high, num);
+        }
+        int ans=-1;
+        while(low <= high)
+        {
+            int mid = (low+high)/2;
+            if(sumofValues(nums,mid) <= threshold){
+                ans = mid;
+                high = mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return low;
+    }
+}
