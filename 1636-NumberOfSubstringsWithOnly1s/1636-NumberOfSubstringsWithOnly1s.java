@@ -1,0 +1,17 @@
+// Last updated: 4/11/2026, 12:46:28 PM
+class Solution {
+    static final int M = 1_000_000_007;
+    public int numSub(String s) {
+      long onecount=0;
+      long result = 0;
+      for(char c:s.toCharArray()){
+        if(c == '1'){
+            onecount++;
+            result = (result + onecount) % M;
+        }else{
+            onecount = 0;
+        }
+      }
+      return(int) result;
+    }
+}
