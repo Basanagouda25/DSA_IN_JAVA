@@ -1,0 +1,19 @@
+// Last updated: 4/11/2026, 12:44:36 PM
+class Solution {
+    public int numberOfAlternatingGroups(int[] colors) {
+        int left =0,right=0;
+        int count=0;
+        int n = colors.length;
+        while(right < n){
+            int next = (left+1)%n;
+            int secondnext = (left+2)%n;
+            if(colors[left] != colors[next] && colors[left] == colors[secondnext]){
+                count++;
+                   
+            }
+            right++;
+            left++;
+        }
+        return count;
+    }
+}
