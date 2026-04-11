@@ -1,0 +1,24 @@
+// Last updated: 4/11/2026, 12:51:26 PM
+class Solution {
+    public List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> subsets(int[] nums) {
+        List<Integer> temp = new ArrayList<>();
+        solve(nums,0,temp);
+        return result;
+    }
+
+    public void solve(int[] nums,int i,List<Integer> temp){
+        if(i >= nums.length){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+
+        //take
+        temp.add(nums[i]);
+        solve(nums,i+1,temp);
+
+        //don't take
+        temp.remove(temp.size()-1);
+        solve(nums,i+1,temp);
+    }
+}
