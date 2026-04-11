@@ -1,0 +1,28 @@
+// Last updated: 4/11/2026, 12:46:04 PM
+class Solution {
+    private boolean ispossible(int[] nums,int maxops,int mid){
+        long totalops = 0;
+        for(int num:nums){
+            totalops += (num-1)/mid;
+        }
+        return totalops <= maxops;
+    }
+    public int minimumSize(int[] nums, int maxOperations) {
+        int l=1;
+        int r = 0;
+        for(int num:nums){
+            r = Math.max(r,num);
+        }
+        int result = r;
+        while(l <= r){
+            int mid = l + (r-l)/2;
+            if(ispossible(nums,maxOperations,mid) == true){
+                result = mid;
+                r = mid - 1;
+            }else{
+                l = mid+1;
+            }
+        }
+        return result;
+    }
+}
