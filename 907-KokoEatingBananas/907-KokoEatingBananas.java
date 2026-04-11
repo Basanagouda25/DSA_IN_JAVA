@@ -1,0 +1,26 @@
+// Last updated: 4/11/2026, 12:47:54 PM
+class Solution {
+    public boolean caneatAll(int[] piles,int mid,int h){
+        int totalhours = 0;
+        for(int x : piles){
+            totalhours += x/mid;
+            if(x%mid != 0){
+                totalhours++;
+            }
+        }
+        return totalhours <= h;
+    }
+    public int minEatingSpeed(int[] piles, int h) {
+        int n = piles.length;
+        int l=1,r=Arrays.stream(piles).max().getAsInt();
+        while(l < r){
+            int mid = l + (r-l)/2;
+            if(caneatAll(piles,mid,h)){
+                r = mid;
+            }else{
+                l = mid + 1;
+            }
+        }
+        return l;
+    }
+}
