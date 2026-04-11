@@ -1,4 +1,4 @@
-// Last updated: 4/11/2026, 12:52:24 PM
+
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         int n = nums.length;
@@ -9,6 +9,6 @@ class Solution {
                 }
             }
         }
-        return new int[]{}; // No solution found
+        return new int[]{};
     }
 }
