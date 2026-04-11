@@ -1,0 +1,17 @@
+// Last updated: 4/11/2026, 12:46:33 PM
+class Solution {
+    public int[] finalPrices(int[] prices) {
+        int n = prices.length;
+        int[] result = prices.clone();
+        Stack<Integer> st = new Stack<>();
+        
+        for(int i=0; i<n; i++){
+            while(!st.isEmpty() && prices[i] <= prices[st.peek()]){
+                int ind = st.pop();
+                result[ind] -= prices[i];
+            }
+            st.push(i);
+        }
+        return result;
+    }
+}
