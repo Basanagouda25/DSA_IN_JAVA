@@ -1,0 +1,23 @@
+// Last updated: 4/11/2026, 12:51:27 PM
+class Solution {
+    List<List<Integer>> result = new ArrayList<>();
+    public List<List<Integer>> combine(int n, int k) {
+        backtrack(result,new ArrayList<>(),1,n,k);
+        return result;
+    }
+
+    public void backtrack(List<List<Integer>> result,List<Integer> temp,int idx,int n,int k)
+    {
+        if(temp.size() == k){
+            result.add(new ArrayList<>(temp));
+            return;
+        }
+
+        for(int i=idx; i<=n; i++){
+            
+            temp.add(i);
+            backtrack(result,temp,i+1,n,k);
+            temp.remove(temp.size()-1);
+        }
+    }
+}
