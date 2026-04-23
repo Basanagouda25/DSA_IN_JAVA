@@ -1,0 +1,21 @@
+class Solution {
+    int count = 0;
+    public int countNodes(TreeNode root) {
+        if(root == null){
+            return 0;
+        }
+        int leftN = countNodes(root.left);
+        if(leftN != -1){
+            count++;
+        }else{
+            return 0;
+        }
+        int rightN = countNodes(root.right);
+        if(rightN != -1){
+            count++;
+        }else{
+            return 0;
+        }
+        return count/2;
+    }
+}
